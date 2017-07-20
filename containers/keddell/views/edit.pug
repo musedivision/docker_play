@@ -1,0 +1,105 @@
+extends layout
+
+block content
+  .container
+    .row
+      .col-sm-12
+        h1.underNav Edit Website content
+        pre Authorised access
+
+        //- HOME
+        h1 Home Gallery
+        .jumbotron
+          .row
+            .col-sm-12.sortable.home
+              each val, index in data.home.photos
+                .col-sm-3.gallery-item.ui-state-default(id= val.name data-unique=val.name)
+                  button(type='button' class='close' aria-label='Close' data-title="home")
+                    span(aria-hidden='true') &times;
+                  img.gallery-pic(src=val.path)
+              button(value="home" class="btn btn-warning btn-block changeOrder") Save Order
+
+        form( method="post" action='/edit/api/home' enctype='multipart/form-data')
+          input( name="home" type="file" id="inputFile" class="form-control" multiple)
+          button(class="btn btn-lg btn-success btn-block" type="submit") Upload Images
+
+
+        //- ABOUT
+        .container
+          h1 About Page
+          h4 Copy displayed on about page
+          .row
+            .col-sm-6
+              form( method="post" action='/edit/api/about')
+                textarea(placeholder="To make text Italic write \'ITALIC \' in front of the paragraph" cols='40' rows='5' name="about" type="text" id="inputAbout" class="form-control")
+                button(class="btn btn-lg btn-success btn-block" type="submit") Save
+            .col-sm-6
+              h4 current
+              each val, index in data.about
+                if val.class === "italic"
+                  p.italic= val.text
+
+                else
+
+                  p= val.text
+
+        //- PROJECTS
+        h1 Project Pages
+        .container
+          .row
+            each val, index in data.projects
+              //- project info / controls
+              .col-sm-3.project-item
+                  h1= val.title
+                  p= val.description
+                  if val.photos.length !== 0
+                    a(href='/project/' + val.title )
+                      img.gallery-pic(src= val.photos[0].path)
+                  form.projectPages( method="post" action="/edit/api/project/delete")
+                    button(value= val.title class="btn btn-warning btn-block editProject") Edit
+                    button(name="delete" value= val.title class="btn btn-danger btn-block" type="submit") delete
+
+              //- Edit project
+              .col-sm-9.edit-project
+                h1= "Editing: "+val.title
+                .jumbotron
+                  .row
+                    //- sortable list of photos
+                    .col-sm-12.sortable(class= val.title)
+                      each image, index in val.photos
+                        .col-sm-3.gallery-item.ui-state-default(id=image.name data-unique=image.name)
+                          button(type='button' class='close' aria-label='Close' data-title=val.title)
+                            span(aria-hidden='true') &times;
+                          img.gallery-pic(src=image.path)
+                      button(value=val.title class="btn btn-warning btn-block changeOrder") Save Order
+                //- update form
+                form( method="post" action='/edit/api/project/edit' enctype='multipart/form-data')
+                  input(value=val.title placeholder="Title"  name="title" type="text" id="newTitle" class="form-control")
+                  textarea(placeholder="Description" cols='40' rows='5' name="description" type="text" id="newDescription" class="form-control")= val.description
+                  input( name="pic" type="file" id="newProjectFile" class="form-control" multiple)
+                  input(type="hidden" name="project" value=val.title)
+                  button(class="btn btn-lg btn-success btn-block" type="submit") Update Project
+
+        //- NEW PROJECT
+        .container
+          br
+          br
+          .row
+            .col-sm-12.col-lg-4.col-lg-offset-4
+              button(class="btn btn-lg btn-success btn-block" id="newToggle") New Project
+        .container.newProjectContainer
+          h1 New Project
+
+          form.uploadTest( method="post" action='/edit/api/project/new' enctype='multipart/form-data')
+            input(placeholder="Title" name="title" type="text" id="newTitle" class="form-control")
+            textarea(placeholder="Description" cols='40' rows='5' name="description" type="text" id="newDescription" class="form-control")
+            input( name="pic" type="file" id="newProjectFile" class="form-control" multiple)
+            button(class="btn btn-lg btn-success btn-block" type="submit") Create New Project
+
+        .container
+          br
+          .row
+            .col-sm-12.col-lg-4.col-lg-offset-4
+              a(href="/signout" class="btn btn-danger btn-block") Sign Out
+
+        .bottomPage

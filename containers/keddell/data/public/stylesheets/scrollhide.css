@@ -1,0 +1,23 @@
+@media(min-width: 767px) {
+  .scrollable{
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+  }
+
+  .inner-scroll{
+      width: 108%;
+      height: 100%;
+      overflow: auto;
+      padding-right: 17px; /* exact value is given in JavaScript code */
+  }
+
+  html, body{
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+.inner-scroll{
+    padding-right: 17px; /* exact value is given in JavaScript code */
+}

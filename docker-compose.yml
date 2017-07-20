@@ -1,0 +1,32 @@
+version: '2'
+services:
+  stirling:
+    container_name: stirling
+    build: containers/stirling
+    env_file:
+      - .globals
+    environment:
+      - USER=mrstudio@richardkeddell.com
+      - TESTPHRASE=photosalbum1999
+    volumes:
+      - ./containers/stirling/data:/data
+  keddell:
+    container_name: keddell
+    build: containers/keddell
+    env_file:
+      - .globals
+    environment:
+      - USER=mrstudio@richardkeddell.com
+      - TESTPHRASE=photosalbum1999
+    volumes:
+      - ./containers/keddell/data:/data
+  gateway:
+    container_name: gateway
+    build: containers/gateway
+    env_file:
+      - .globals
+    ports:
+      - "80:8000"
+    links:
+      - "stirling"
+      - "keddell"

@@ -1,0 +1,48 @@
+{
+  "home": {
+    "photos": [
+      {
+        "name": "home-8093457934",
+        "path": "asdf"
+      },
+      {
+        "name": "home-8093457934",
+        "path": "asdf"
+      }
+    ]
+  },
+  "about": {
+    "normal": "it is working normal",
+    "italic": "asdf"
+  },
+  "projects": [
+      {
+        "title": "blah",
+        "description": "lorem epsum",
+        "photos": [
+          {
+            "name": "home-8093457934",
+            "path": "asdf"
+          },
+          {
+            "name": "home-8093457934",
+            "path": "asdf"
+          }
+        ]
+      },
+    {
+      "title": "blah",
+      "description": "lorem epsum",
+      "photos": [
+        {
+          "name": "home-8093457934",
+          "path": "asdf"
+        },
+        {
+          "name": "home-8093457934",
+          "path": "asdf"
+        }
+      ]
+    }
+  ]
+}

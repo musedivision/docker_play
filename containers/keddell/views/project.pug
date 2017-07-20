@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  link(rel='stylesheet', href='/stylesheets/scrollhide.css')
+
+  #project-swiper
+    div.swiper-wrapper
+      if typeof data.photos !== "undefined"
+        each val, index in data.photos
+          if index === 0
+              .swiper-slide.swiper-lazy(data-background="/"+ val.path)
+                .underNav.fixedBox
+                  .copyBox.wide
+                    .col-sm-12
+                      h1.projectCopy= data.title
+                      p.italic= data.description
+          else
+
+            .swiper-slide.swiper-lazy(data-background="/"+ val.path)
+    //- !-- Add Pagination --
+    //- div class="swiper-pagination swiper-pagination-white"
+    //- !-- Navigation --
+    .navigation
+      div.swiper-button-next.swiper-button-white
+      div.swiper-button-prev.swiper-button-white

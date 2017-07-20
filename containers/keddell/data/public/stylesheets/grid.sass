@@ -1,0 +1,111 @@
+// flex spacing nav and footer
+body
+  .page-wrapper
+    height: auto
+    flex-direction: column
+    color: #fff
+//nav
+nav
+  padding: 15px
+  flex-direction: column
+  background-color: black
+  color: #FFF
+  top: 0
+  left: 0
+  display: flex
+  position: fixed
+  width: 260px
+  z-index: 10
+  h1
+    margin: 0px
+    font-family: Rokkitt
+    font-size: 1.5em
+    font-weight: 700
+  a
+    transition: all 0.15s ease
+    color: #fff
+    &:hover
+      transition: all 0.15s ease
+      text-decoration: none
+      color: #808285
+
+//footer
+footer
+  font-family: "Rokkitt-reg"
+  background-color: black
+  color: #FFF
+  bottom: 0
+  left: 0
+  display: flex
+  flex-direction: column
+  position: fixed
+  justify-content: flex-start
+  padding: 5px 10px
+  max-width: 260px
+  z-index: 10
+  font-size: 0.85em
+  font-weight: 100
+  p
+    margin: 5px
+    margin-bottom: 2px
+    margin-top: 0px
+    font-size: 1.2em
+    font-weight: 400
+  a
+    transition: all 0.15s ease
+    color: #fff
+    &:hover
+      transition: all 0.15s ease
+      text-decoration: none
+      color: #808285
+// font
+h1.projectCopy
+  font-size: 1.5em
+  font-weight: 700
+
+.content-wrapper
+  margin: 0
+  height: auto
+  width: 100%
+
+.fixedBox
+  position: fixed
+
+.underNav
+  display: flex
+  justify-content: flex-start
+  color: #fff
+  padding-top: 105px
+  padding-right: 0
+  // z-index: 100 !important
+  @media(max-width: 670px)
+    position: relative
+  .wide
+    max-width: 260px
+  .copyBox
+    background-color: #000
+
+.nopad
+  margin: 0
+  padding: 0
+
+.fwid
+  width: 100%
+
+
+.nota
+  padding: 0
+
+.flex
+  display: flex
+
+.flexcol
+  justify-content: center
+  align-items: center
+  flex: 1
+
+.pad-top
+  padding-top: 105px
+  padding-bottom: 105px
+  @media(max-width: 767px)
+    padding-top: 0px

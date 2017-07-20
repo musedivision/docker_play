@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  #index-swiper
+    div.swiper-wrapper
+
+      //- create images from list - lazyLoading
+      if data.home.photos.length !== 0
+        each val, index in data.home.photos
+          .swiper-slide.swiper-lazy(data-background= val.path)
+            .swiper-lazy-preloader
+      else
+        .swiper-slide.swiper-lazy
+          .swiper-lazy-preloader
+
+
+    //- prev and next buttons
+    div.swiper-button-next.swiper-button-white
+    div.swiper-button-prev.swiper-button-white
