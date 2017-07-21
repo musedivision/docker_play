@@ -1,32 +1,16 @@
 version: '2'
 services:
-  stirling:
-    container_name: stirling
-    build: containers/stirling
+  nodeapp:
+    container_name: nodeapp
+    build: containers/nodeapp
     env_file:
       - .globals
-    environment:
-      - USER=mrstudio@richardkeddell.com
-      - TESTPHRASE=photosalbum1999
-    volumes:
-      - ./containers/stirling/data:/data
-  keddell:
-    container_name: keddell
-    build: containers/keddell
-    env_file:
-      - .globals
-    environment:
-      - USER=mrstudio@richardkeddell.com
-      - TESTPHRASE=photosalbum1999
     volumes:
       - ./containers/keddell/data:/data
-  gateway:
-    container_name: gateway
-    build: containers/gateway
-    env_file:
-      - .globals
-    ports:
-      - "80:8000"
+  nginx:
+    container_name: nginx
+    build: containers/nginx
     links:
-      - "stirling"
-      - "keddell"
+      - nodeapp
+    ports:
+      - "8000:5000"

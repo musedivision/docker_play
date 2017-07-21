@@ -1,6 +1,6 @@
 slackin="./containers/fccaux/slackin/bin/slackin"
 
-include .globals
+# include .globals
 
 slackin:
 			$(slackin) freecodecampauckland ${SLACK_API_TOKEN}
@@ -12,12 +12,8 @@ down:
 			docker-compose down
 
 refresh:
-			docker cp containers/gateway/. gateway:/
-			docker cp containers/keddell/. keddell:/
-			docker cp containers/stirling/. stirling:/
-			docker exec stirling pm2 restart 0 --silent&
-			docker exec keddell pm2 restart 0 --silent&
-			docker exec gateway pm2 restart 0 --silent&
+			docker cp containers/nodeapp/. nodeapp:/
+			docker exec nodeapp pm2 restart 0 --silent&
 
 look:
 			docker exec -it $t /bin/sh
